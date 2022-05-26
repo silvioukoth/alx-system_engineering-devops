@@ -1,1 +1,1 @@
-Display current directory contents in a long format with user IDs displayed numerically and And hidden files
+my_first_directory in the /tmp/ directory
