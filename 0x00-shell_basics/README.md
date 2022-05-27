@@ -1,1 +1,1 @@
- Create a script that creates a directory named silvio in the /tmp/ directory
+Write a script that changes the working directory to the previous one
