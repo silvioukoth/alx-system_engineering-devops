@@ -1,1 +1,1 @@
-Write a script that prints all the groups the current user is part 
+Create a script that creates a directory called my_dir with permissions 751 in the working directory
