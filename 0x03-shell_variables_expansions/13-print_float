@@ -1,3 +1,2 @@
 #!/bin/bash
-printf %.2fn $NUM
-printf %.2fn $NUM
+ echo printf %.2fn $NUM=3.14
