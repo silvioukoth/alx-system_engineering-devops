@@ -1,2 +1,2 @@
 #!/bin/bash
-Pigeon="Penguine"
+set | less
