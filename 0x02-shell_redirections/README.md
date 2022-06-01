@@ -1,1 +1,1 @@
-Display the content of the /etc/passwd file
+Write a shell script that creates a file named exactly Best school
