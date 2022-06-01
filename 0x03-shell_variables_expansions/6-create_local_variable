@@ -1,2 +1,2 @@
 #!/bin/bash
-$Name $Value
+echo $Name $Value
