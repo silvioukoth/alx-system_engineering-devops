@@ -1,1 +1,1 @@
-Write a script that changes the group owner to school for the file hello
+Write a script that prints “Hello, World”, followed by a new line to the standard output
