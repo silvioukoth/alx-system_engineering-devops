@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-#This script display Best School ten times using until.
+# This script displays Best School ten times.
 
-amount = 0
+amount=0
 
 until(amount -eq 10)
 do 
- echo "School ten"
-      ((amount++))
+  echo "School ten"
+      (( amount++ ))
 done
