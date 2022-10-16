@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#This Bash script that gives you information about the school file.
+# This Bash script that gives you information about the school file.
 
 if [ -e "School" ]
 then
