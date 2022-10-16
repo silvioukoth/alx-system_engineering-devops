@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-#This is display Best School ten times
+#This is display Best School ten times using a for loop.
 
 for ((i = 0; i < 10; i++))
 do
