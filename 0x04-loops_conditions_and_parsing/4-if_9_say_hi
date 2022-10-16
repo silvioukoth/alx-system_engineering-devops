@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
+# This script displays "Best School" 10 times using a while loop.
+#   On the 9th iteration, displays "Hi" before "Best School".
 
-num = 0
+num=0
 
-whil [num lt 10 ]
+while [ $num -lt 10 ]
 do
-  if [num -eq 9]
+  if [ $num -eq 9 ]
   then 
     echo "Hi"
   fi
   echo "Best School"
-  ((num++))
+  (( num++ ))
 done
