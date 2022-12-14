@@ -1,9 +1,20 @@
 #!/usr/bin/env bash
-# Create redirect
-INDEX_COPY="Hello World!" for the win!"
+# Configures an Nginx server so that /redirect_me redirects to another page.
+# The redirection is configured as a "301 Moved Permanently"
 
-sudo apt-get -y update
-sudo apt-get -y install nginx
-echo "$INDEX_COPY" | sudo tee /var/www/html/index.nginx-debian.html > /dev/null
-sudo sed -i '/^\sserver_name.*/a \        rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
-sudo service nginx start
+apt-get update
+apt-get install -y nginx
+
+mkdir /etc/nginx/html
+touch /etc/nginx/html/index.html
+echo "Holberton School" > /etc/nginx/html/index.html
+printf %s "server {
+    listen 80;
+    listen [::]:80 default_server;
+    root   /etc/nginx/html;
+    index  index.html index.htm;
+    location /redirect_me {
+    return 301 http://cuberule.com/;
+    }
+}" > /etc/nginx/sites-available/default
+service nginx restart
