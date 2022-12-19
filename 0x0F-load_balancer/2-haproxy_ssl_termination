@@ -1,0 +1,51 @@
+global
+	log /dev/log	local0
+	log /dev/log	local1 notice
+	chroot /var/lib/haproxy
+	stats socket /run/haproxy/admin.sock mode 660 level admin
+	stats timeout 30s
+	user haproxy
+	group haproxy
+	daemon
+
+	# Default SSL material locations
+	ca-base /etc/ssl/certs
+	crt-base /etc/ssl/private
+	# Default ciphers to use on SSL-enabled listening sockets.
+	# For more information, see ciphers(1SSL). This list is from:
+
+
+
+defaults
+	log	global
+	mode	http
+	option	httplog
+	option	dontlognull
+        timeout connect 5000
+        timeout client  50000
+        timeout server  50000
+	errorfile 400 /etc/haproxy/errors/400.http
+	errorfile 403 /etc/haproxy/errors/403.http
+	errorfile 408 /etc/haproxy/errors/408.http
+	errorfile 500 /etc/haproxy/errors/500.http
+	errorfile 502 /etc/haproxy/errors/502.http
+	errorfile 503 /etc/haproxy/errors/503.http
+	errorfile 504 /etc/haproxy/errors/504.http
+
+frontend load_balancer
+	bind	0.0.0.0:80
+	bind	0.0.0.0:443 ssl crt https://controlpanel.tech/servlet/CustomerIndexServlet?redirectpage=null&userLoginId=DWBsc51NDvQvy7ASJ34uB5rGbGE97EpAiPr3BSp97ca6W44ehP6Mw6WN8F4zL33RUdeRd8OFKvduVO6Q7H3iEtFnCK8K3rotHXqHGP8C2mGMAjCSXPGTC7HZZPqqaLxj&url=bqF39ZhK+kfmTPs6f4VdBiCRfK9/clXtT1efaDIVWgqAvLESKlgaDA==
+	mode	http
+	acl letsencrypt-acl path_beg /.well-known/acme-challenge/
+	use_backend letsencrypt-backend if letsencrypt-acl
+
+	default_backend	web_servers
+
+backend letsencrypt-backend
+	server letsencrypt 127.0.0.1:8888
+
+backend web_servers
+	balance	roundrobin
+	mode	http
+	server	56121-web-01 54.159.26.194:80
+	server	56121-web-02 34.224.1.95:80
